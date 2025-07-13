@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Clean Old Report') {
+            steps {
+                bat 'rmdir /s /q HTMLReport || exit 0'
+            }
+        }
         stage('Run JMeter Test') {
             steps {
                 bat '"%JMETER_HOME%\\bin\\jmeter.bat" -n -t TestPlan_JpetStore.jmx -l results.jtl -e -o HTMLReport'
@@ -16,6 +21,9 @@ pipeline {
         stage('Publish Report') {
             steps {
                 publishHTML(target: [
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
                     reportDir: 'HTMLReport',
                     reportFiles: 'index.html',
                     reportName: 'JMeter Report'
