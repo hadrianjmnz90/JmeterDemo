@@ -10,6 +10,7 @@ pipeline {
         stage('Clean Old Report') {
             steps {
                 bat 'rmdir /s /q HTMLReport || exit 0'
+                bat 'del results.jtl /F /Q || exit 0'
             }
         }
         stage('Run JMeter Test') {
