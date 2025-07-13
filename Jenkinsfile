@@ -8,12 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/hadrianjmnz90/JmeterDemo.git'
-            }
-        }
-
         stage('Run JMeter Test') {
             steps {
                 bat 'jmeter -n -t TestPlan_JpetStore.jmx -l results.jtl -e -o HTMLReport'
