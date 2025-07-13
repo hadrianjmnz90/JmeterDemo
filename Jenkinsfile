@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK-11' // Make sure this JDK is installed/configured in Jenkins
-    }
-
     environment {
         // Surround with double quotes to handle space in "Program Files"
         JMETER_HOME = '"C:\\Program Files\\apache-jmeter-5.6.3"'
