@@ -22,7 +22,7 @@ pipeline {
         stage('Publish Report') {
             steps {
                 publishHTML(target: [
-                    allowMissing: true,
+                    allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
                     reportDir: 'HTMLReport',
